@@ -117,10 +117,11 @@ width: 40%;
 
 
 }
-.slides{
-   
+.slide_filho{
+   margin-left: 600px;
+   margin-top: -650px;
     width: 60%;
-    padding-right: 90px;
+    padding-right: 80px;
     
     }
 
@@ -137,19 +138,16 @@ margin-top: 20px;
 margin-left: 200px;
 
 } 
-.estrelas{
-width: 70px;
-margin-left: -167px;
-margin-top: 290px;
-margin-bottom: -20px;
-}
+
 p.card-text{
     color: #f1f1f1;
     font-size: 30px;
     text-align: justify;
+    margin-left: 200px;
 }
 h1{
-    color: #f1f1f1;
+    color: #f16f2d;
     font-size: 70px;
     text-align: center;
+     
 }

@@ -25,92 +25,29 @@
 <body>
     <?php 
 
-$subpagina = $_GET['spg'] != '' ? $_GET['spg'] : 'menu';
+$subpagina = $_GET['spg'] != '' ? $_GET['spg'] : 'main';
 $subpagina = $subpagina . '.php';
 
 if (file_exists($subpagina)) {  
     include_once($subpagina); 
-} else {
-    include_once('404.php');
 }
 
 ?>
 
     <div class="sidenav">
         <div class="col-md-6">
-            <a href=""><img class="logo" src="images/icone1.ico" alt="">
+            <a href="?spg=main"><img class="logo" src="images/icone1.ico" alt="">
         </div>
         </a>
 
-        <a class="teste" href="index.php"><img class="navimg" src="images/casa.png" alt="">
+        <a class="teste" href="?spg=main"><img class="navimg" src="images/casa.png" alt="">
             <p class="navlat">Ínicio</p>
         </a>
-        <a href="add_filme.php"><img class="navimg" src="images/adicionar.png" alt="">
+        <a href="?spg=add_filme"><img class="navimg" src="images/adicionar.png" alt="">
             <p class="navlat">Adicionar</p>
         </a>
     </div>
-    <nav class="navbar navbar-expand-lg navbar-light bg-gradient">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#"></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-                <p class="nav">Últimos filmes adicionados</p>
-
-                <div>
-
-                </div>
-
-                <form method="GET" name="form2" id="form2" style="visibility: hidden; display: none;">
-                    <input type="hidden" name="id_filme" value="<?php echo $_GET['id_filme']; ?>" />
-
-                    <input type="hidden" name="spg" value="<?php echo $_GET['spg']; ?>" />
-                </form>
-                <form name="form2" method="GET" class="d-flex" action="">
-                    <input class="form-control me-2" name="search" id="search" value="<?= $_GET['search'];?>"
-                        style="background: #03052e; color:#f16f2d; border-color: #f16f2d; border-width: 1px; border-radius: 2px;"
-                        type="text" placeholder="Buscar">
-                    <button class="btn btn-outline-warning" style="margin-top:10px;"
-                        type="submit">Buscar</button>
-                </form>
-
-            </div>
-
-        </div>
-    </nav>
-    <?php
-include_once('database/config.php');
-
-$sql = 'SELECT id_filme, autor, imagem, descricao, titulo FROM filme ';
-if ($_GET['search']!='') {
-  $sql .= " WHERE titulo LIKE '%" . $_GET['search'] . "%' ";
-}
-$sql .= ' ORDER BY id_filme DESC';
-$res = mysql_query($sql) or die(mysql_error());
-?>
-
-    <div class="container">
-
-        <?php
-while ($row = mysql_fetch_assoc($res)) {
-    echo '<div class="slide">';
-    echo '<a class="filmes" href="?spg=sinopse&id_filme='. $row['id_filme'] .'">';
-    echo '<img class="capa" src="' . $row['imagem'] . '" alt="">';
-    echo '<img class="estrelas" src="images/estrelas.png" alt="">';
-    echo '<h5>' . $row['titulo'] . '</h5>';
-    echo '<h6>' . $row['autor'] . '</h6>';
-    echo '</a>';
-    echo '</div>';
-}
-
-?>
-
-    </div>
-
+  
     <footer>
         <img class="creathus" style="width: auto; height: auto;" src="images/creathus.png" alt="">
     </footer>

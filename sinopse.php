@@ -1,7 +1,7 @@
 <?php
 include_once('database/config.php');
 date_default_timezone_set('America/Manaus');
-$sql = "SELECT * FROM filme WHERE id_filme='24'";
+$sql = "SELECT * FROM filme WHERE id_filme='" . $_GET['id_filme'] . "'";
 $res = mysql_query($sql) or die(mysql_error());
 $menu = mysql_fetch_assoc($res);
 ?>
@@ -13,7 +13,7 @@ $menu = mysql_fetch_assoc($res);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
@@ -27,19 +27,18 @@ $menu = mysql_fetch_assoc($res);
 
 <form method="GET" name="form2" id="form2" style="visibility: hidden; display: none;">
     <input type="hidden" name="id_filme" value="<?php echo $_GET['id_filme']; ?>" />
-
     <input type="hidden" name="spg" value="<?php echo $_GET['spg']; ?>" />
 </form>
 
 <body>
-    <a href="index.php" class="btn btn-warning pull-right">Voltar</a>
+    <a href="?spg=main" class="btn btn-warning pull-right">Voltar</a>
     <div class="sidenav">
         <div class="col-md-6">
-            <a href=""><img class="logo" src="images/icone1.ico" alt="">
+            <a href="?spg=main"><img class="logo" src="images/icone1.ico" alt="">
         </div>
         </a>
 
-        <a class="teste" href="index.php"><img class="navimg" src="images/casa.png" alt="">
+        <a class="teste" href="?spg=main"><img class="navimg" src="images/casa.png" alt="">
             <p class="navlat">Ínicio</p>
         </a>
         <a href="add_filme.php"><img class="navimg" src="images/adicionar.png" alt="">
@@ -54,8 +53,8 @@ $menu = mysql_fetch_assoc($res);
 
 
         </div>
-        <div class="slides">
-            <h1><?php echo $menu['titulo'];?></h1>
+        <div class="slide_filho">
+            <h1><?php echo utf8_encode($menu['titulo']);?></h1>
             <br>
             <p class="card-text"><?php echo utf8_encode($menu['descricao']);?></p>
 

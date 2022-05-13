@@ -107,6 +107,13 @@ img.navimg:hover {
     .slide:hover{
         cursor: pointer;
           }
+
+.slides{
+    margin-left: 300px;
+    margin-top: -100px;
+    width: 100%;
+    margin-bottom: ;
+}
  label{
      color: #f16f2d;
      text-align: left;
